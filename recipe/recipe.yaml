@@ -1,5 +1,5 @@
 context:
-  version: "0.9.0"
+  version: "0.10.0"
 
 package:
   name: crmvec
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/anun333/crmvec/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 13daf752281c355097f10386d5cd7f3dfb23842dd66c3e9aa081e338ce7929cb
+  sha256: deaf481e2933d267c22b0f93598fa7bc442951cedd7cd3aa973cd2885632c8fc
 
 build:
   number: 0
@@ -37,12 +37,16 @@ tests:
         - lib/crmvec/libmvec.so.1
         - if: x86_64
           then: lib/crmvec/libcrpreload.so
+        - if: x86_64
+          then: lib/crmvec/fast/libmvec.so.1
       bin:
         - crmvec-run
   - script:
       - crmvec-run --help
       - if: x86_64
         then: crmvec-run --libm true
+      - if: x86_64
+        then: crmvec-run --fast true
 
 about:
   homepage: https://github.com/anun333/crmvec
