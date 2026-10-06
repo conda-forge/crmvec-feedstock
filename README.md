@@ -13,8 +13,10 @@ Development: https://github.com/anun333/crmvec
 
 The vector functions gcc and clang call when they vectorize a loop over
 sin, exp, pow and 23 more, correctly rounded (bit for bit CORE-MATH's)
-in every rounding mode; half-precision and bfloat16 arrays. Installed
-in lib/crmvec, used through crmvec-run or pkg-config crmvec.
+in every rounding mode; half-precision and bfloat16 arrays. On x86-64,
+also libcrpreload.so: CORE-MATH's correctly rounded functions under the
+C library's names, for a program's scalar math (crmvec-run --libm).
+Installed in lib/crmvec, used through crmvec-run or pkg-config crmvec.
 
 Current build status
 ====================
