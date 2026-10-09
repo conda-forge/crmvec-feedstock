@@ -3,6 +3,10 @@ About crmvec-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/crmvec-feedstock/blob/main/LICENSE.txt)
 
+
+About crmvec
+------------
+
 Home: https://github.com/anun333/crmvec
 
 Package license: MIT
@@ -13,10 +17,30 @@ Development: https://github.com/anun333/crmvec
 
 The vector functions gcc and clang call when they vectorize a loop over
 sin, exp, pow and 23 more, correctly rounded (bit for bit CORE-MATH's)
-in every rounding mode; half-precision and bfloat16 arrays. On x86-64,
-also libcrpreload.so: CORE-MATH's correctly rounded functions under the
-C library's names, for a program's scalar math (crmvec-run --libm).
+in every rounding mode; half-precision and bfloat16 arrays. Also
+libcrpreload.so: CORE-MATH's correctly rounded functions under the C
+library's names, for a program's scalar math (crmvec-run --libm).
 Installed in lib/crmvec, used through crmvec-run or pkg-config crmvec.
+
+About crmvec-libm
+-----------------
+
+Home: https://github.com/anun333/crmvec
+
+Package license: MIT
+
+Summary: Use crmvec's correctly rounded math for every program run from this environment
+
+Development: https://github.com/anun333/crmvec
+
+Installing crmvec-libm makes every program run from this conda
+environment use crmvec's correctly rounded math functions (exp, log,
+sin, pow, ...) in place of the system's, through an activation
+script; removing it undoes that. Correctly rounded math has one
+result per input, so results stop depending on the CPU and the C
+library version. They can differ once from results computed with the
+system's math library: switch at a study boundary. crmvec-stamp
+OUTPUT_DIR records which math a run used.
 
 Current build status
 ====================
@@ -38,6 +62,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-crmvec-green.svg)](https://anaconda.org/conda-forge/crmvec) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/crmvec.svg)](https://anaconda.org/conda-forge/crmvec) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/crmvec.svg)](https://anaconda.org/conda-forge/crmvec) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/crmvec.svg)](https://anaconda.org/conda-forge/crmvec) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-crmvec--libm-green.svg)](https://anaconda.org/conda-forge/crmvec-libm) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/crmvec-libm.svg)](https://anaconda.org/conda-forge/crmvec-libm) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/crmvec-libm.svg)](https://anaconda.org/conda-forge/crmvec-libm) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/crmvec-libm.svg)](https://anaconda.org/conda-forge/crmvec-libm) |
 
 Installing crmvec
 =================
@@ -56,7 +81,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install crmvec
+conda install crmvec crmvec-libm
 ```
 
 </details>
@@ -65,7 +90,7 @@ conda install crmvec
 <summary>With mamba</summary>
 
 ```
-mamba install crmvec
+mamba install crmvec crmvec-libm
 ```
 
 </details>
@@ -75,9 +100,9 @@ mamba install crmvec
 
 ```
 # for adding to your local project
-pixi add crmvec
+pixi add crmvec crmvec-libm
 # for installing globally
-pixi global install crmvec
+pixi global install crmvec crmvec-libm
 ```
 
 </details>
