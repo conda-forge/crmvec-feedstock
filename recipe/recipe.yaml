@@ -1,5 +1,5 @@
 context:
-  version: "0.12.1"
+  version: "0.12.2"
 
 package:
   name: crmvec
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/anun333/crmvec/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 11dd26b8762c0bad253e4cd6d9c387796ce2d38d90152763f99def7612f180d3
+  sha256: 174de208c2e7bf2d866e88152fe8448989b6138eb13153d25efd0384acb07ec3
 
 build:
   number: 0
